@@ -4,7 +4,7 @@ WORKDIR /aspnetapp
  
 COPY . .
  
-RUN dotnet restore
+RUN dotnet restore ./aspnetapp.csproj
  
 RUN dotnet publish ./aspnetapp.csproj -o /publish/
  
