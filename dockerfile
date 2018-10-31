@@ -19,11 +19,11 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 
 RUN dotnet tool install --global dotnet-sonarscanner --version 4.3.1
 
-RUN dotnet sonarscanner begin /k:${SONAR_PROJECT_KEY} /d:sonar.host.url=${SONAR_URL} /d:sonar.login=${SONAR_TOKEN} /d:sonar.verbose=true /d:sonar.coverage.exclusions="*.css"
+RUN dotnet sonarscanner begin /k:${SONAR_PROJECT_KEY} /d:sonar.organization="chandramohang-github" /d:sonar.host.url=${SONAR_URL} /d:sonar.login=${SONAR_TOKEN} /d:sonar.verbose=true /d:sonar.coverage.exclusions="*.css"
 RUN dotnet publish ./aspnetapp.csproj -o /publish/
 RUN dotnet sonarscanner end /d:sonar.login=${SONAR_TOKEN}
 
-FROM microsoft/dotnet:2.1-aspnetcore-runtime
+FROM microsoft/dotnet
 
 WORKDIR /publish
 
