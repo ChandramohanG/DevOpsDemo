@@ -1,11 +1,12 @@
+pool:
+  vmImage: 'Ubuntu 16.04'
+  
+variables:
+  buildConfiguration: 'Release'
+  
 resources:
 - repo: self
   clean: true
-queue:
-  name: Hosted Linux Preview
-  demands: 
-  - msbuild
-  - java
 
 steps:
 - task: DotNetCoreCLI@2
