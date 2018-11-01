@@ -28,15 +28,12 @@ steps:
 
     projectName: DevOpsDemo
 
-- task: MSBuild@1
-  displayName: 'Build solution aspnetcore.sln'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
   inputs:
-    solution: aspnetcore.sln
+    command: build
 
-    msbuildArchitecture: x64
-
-    clean: true
-
+    projects: '**/*.csproj'
 
 - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
